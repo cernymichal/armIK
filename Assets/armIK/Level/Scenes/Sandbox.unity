@@ -395,7 +395,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 539064556}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b41f296ada2f4bf4eb032b4743487540, type: 3}
+  m_Script: {fileID: 11500000, guid: b4003fad25d8eac4ba221448d9777303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   child: {fileID: 2094886246}
@@ -514,7 +514,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 579066484}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b41f296ada2f4bf4eb032b4743487540, type: 3}
+  m_Script: {fileID: 11500000, guid: b4003fad25d8eac4ba221448d9777303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   child: {fileID: 1851617296}
@@ -682,12 +682,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1242043414}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2822670b2462e534b99600eb05cda5db, type: 3}
+  m_Script: {fileID: 11500000, guid: 56d27dd5fe5d66741b944b094060f369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 539064557}
   maxSteps: 16
-  targetTolerance: 0.01
+  targetDistanceTolerance: 0.001
+  minIterationImprovement: 0.005
 --- !u!65 &1242043417
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -913,7 +914,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1851617295}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe99b5c1f6e537b49af47a06ea038170, type: 3}
+  m_Script: {fileID: 11500000, guid: a3f4d29778d630f469778a3c96659543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1562456361}
@@ -1096,10 +1097,6 @@ MonoBehaviour:
     m_ActionName: Orbit/Zoom[/Mouse/scroll/y]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 67c2030f-c4fb-4348-8436-2ba1e8a5d1f4
-    m_ActionName: Orbit/Orbit[/Mouse/middleButton]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: b9d06c17-f913-41ed-8948-b755fc76bfb9
     m_ActionName: Orbit/MousePosition[/Mouse/position]
   m_NeverAutoSwitchControlSchemes: 0
@@ -1180,7 +1177,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1988067096}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b41f296ada2f4bf4eb032b4743487540, type: 3}
+  m_Script: {fileID: 11500000, guid: b4003fad25d8eac4ba221448d9777303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   child: {fileID: 579066485}
@@ -1299,7 +1296,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2094886245}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b41f296ada2f4bf4eb032b4743487540, type: 3}
+  m_Script: {fileID: 11500000, guid: b4003fad25d8eac4ba221448d9777303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   child: {fileID: 1988067097}

@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(DragObjects))]
-public class orbitControls : MonoBehaviour {
+public class OrbitControls : MonoBehaviour {
     [SerializeField] private Transform target;
 
     [SerializeField] private float distance = 1.0f;

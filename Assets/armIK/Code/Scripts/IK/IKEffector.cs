@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IKEffector : IIKJoint {
+public class IKEffector : IKJoint {
     [SerializeField] public Transform target;
 
-    public override IIKJoint Child() {
+    public override IKJoint Child() {
         return null;
     }
 

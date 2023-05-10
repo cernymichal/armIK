@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IKRevoluteJoint : IKUnconstrainedJoint {
-    [SerializeField] public float maxAngle = 360.0f;
+public class IKRevoluteJoint : IK1DOFJoint {
+    // [SerializeField] public float maxAngle = 360.0f;
 
-    // TODO Orientation constraint
+    private void OnDrawGizmos() {
+        DrawLineToChild();
+        Gizmos.color = Color.red;
+        Utils.GizmosDrawArc(transform.localToWorldMatrix, Vector3.up, Vector3.back, 360);
+    }
 }

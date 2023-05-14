@@ -6,8 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/armIK/Level/Scenes/Sandbox.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/armIK/Level/Scenes/Unconstrained.unity
+    guid: 1eef9e6f2d800ad48889efbeb2938e94
+  - enabled: 1
+    path: Assets/armIK/Level/Scenes/3DOF.unity
+    guid: 7f327f4a45e51e74ebb58d097d30788d
+  - enabled: 1
+    path: Assets/armIK/Level/Scenes/6DOF.unity
+    guid: e47432b9e64b69345a58cc7010eb2f50
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 6c026a6b211f2234ea5808bb0e2ed9b9,
       type: 2}

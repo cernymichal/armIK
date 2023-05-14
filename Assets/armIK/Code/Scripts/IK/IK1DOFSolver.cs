@@ -6,9 +6,9 @@ using UnityEngine;
 public class IK1DOFSolver : MonoBehaviour {
     [SerializeField] public IKJoint root = null;
     [SerializeField] private int maxIterations = 16;
-    [SerializeField] private float targetDistanceTolerance = 0.001f;
+    [SerializeField] private float targetDistanceTolerance = 0.01f;
     [SerializeField] private float minIterationImprovement = 0.005f;
-    [SerializeField] private bool solveFixedUpdate = true;
+    [SerializeField] private bool solveInUpdate = true;
 
     private List<IKJoint> joints = new List<IKJoint>();
     private List<float> distances = new List<float>();
@@ -21,8 +21,8 @@ public class IK1DOFSolver : MonoBehaviour {
         InitializeSystem();
     }
 
-    private void FixedUpdate() {
-        if (solveFixedUpdate)
+    private void Update() {
+        if (solveInUpdate)
             Solve();
     }
 

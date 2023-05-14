@@ -33,13 +33,22 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "MousePosition",
-                    "type": "Value",
-                    "id": "b9d06c17-f913-41ed-8948-b755fc76bfb9",
-                    "expectedControlType": "Vector2",
+                    "name": "NextScene",
+                    "type": "Button",
+                    "id": "fb4f6a20-33e3-4795-99fa-6c7cf455f0b0",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PreviousScene",
+                    "type": "Button",
+                    "id": "08921739-2e7c-4d42-880f-9933d5c27a6a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -78,12 +87,23 @@
                 },
                 {
                     "name": "",
-                    "id": "d86ecbef-f7ee-4197-8dfa-0497cc1ba034",
-                    "path": "<Mouse>/position",
+                    "id": "ceb8f91e-e4a1-4794-8a0d-ef71f93fdd9b",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MousePosition",
+                    "action": "NextScene",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c1910e41-0fa7-4920-9ab6-b2c2e209cdf5",
+                    "path": "<Keyboard>/backspace",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PreviousScene",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

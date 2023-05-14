@@ -24,7 +24,7 @@ public class OrbitControls : MonoBehaviour {
 
     private bool drag = false;
 
-    private void Awake() {
+    private void OnEnable() {
         var playerInput = GetComponent<PlayerInput>();
         dragObjects = GetComponent<DragObjects>();
 
@@ -42,6 +42,7 @@ public class OrbitControls : MonoBehaviour {
         moveAction.performed -= MouseMove;
         dragAction.started -= dragStart;
         dragAction.performed -= dragEnd;
+        zoomAction.performed -= Zoom;
     }
 
     private void MouseMove(InputAction.CallbackContext context) {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Gizmos = Popcron.Gizmos;
 
 public class IKEffector : IKJoint {
     [SerializeField] public Transform target;
@@ -9,11 +10,10 @@ public class IKEffector : IKJoint {
         return null;
     }
 
-    private void OnDrawGizmos() {
+    protected override void DrawGizmos() {
         if (!target)
             return;
 
-        Gizmos.color = Color.green;
-        Gizmos.DrawLine(transform.position, target.transform.position);
+        Gizmos.Line(transform.position, target.transform.position, Color.green);
     }
 }

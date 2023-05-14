@@ -3,11 +3,12 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IKSolver : MonoBehaviour {
+public class IK1DOFSolver : MonoBehaviour {
     [SerializeField] public IKJoint root = null;
-    [SerializeField] private int maxSteps = 16;
+    [SerializeField] private int maxIterations = 16;
     [SerializeField] private float targetDistanceTolerance = 0.001f;
     [SerializeField] private float minIterationImprovement = 0.005f;
+    [SerializeField] private bool solveFixedUpdate = true;
 
     private List<IKJoint> joints = new List<IKJoint>();
     private List<float> distances = new List<float>();
@@ -21,6 +22,11 @@ public class IKSolver : MonoBehaviour {
     }
 
     private void FixedUpdate() {
+        if (solveFixedUpdate)
+            Solve();
+    }
+
+    public void Solve() {
         if (joints.Count == 0)
             return;
 
@@ -34,7 +40,7 @@ public class IKSolver : MonoBehaviour {
         }
 
         var targetDistance = DistanceToTarget();
-        for (int i = 0; i < maxSteps && targetDistance > targetDistanceTolerance; i++) {
+        for (int i = 0; i < maxIterations && targetDistance > targetDistanceTolerance; i++) {
             FABRIKPass();
 
             var newTargetDistance = DistanceToTarget();
@@ -48,6 +54,11 @@ public class IKSolver : MonoBehaviour {
     public void InitializeSystem() {
         if (!root)
             return;
+
+        joints = new List<IKJoint>();
+        distances = new List<float>();
+        relativeRotations = new List<Quaternion>();
+        distanceSum = 0f;
 
         IKJoint joint = root;
         while (joint) {
@@ -132,6 +143,6 @@ public class IKSolver : MonoBehaviour {
     }
 
     private float DistanceToTarget() {
-        return Vector3.Distance(joints[joints.Count - 1].transform.position, target.position);
+        return Vector3.Distance(joints[joints.Count - 1].position, target.position);
     }
 }

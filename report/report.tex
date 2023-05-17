@@ -56,7 +56,7 @@ FABRIK je velmi jednoduchý iterativní algoritmus\cite{bib:fabrik}. Pokud před
 \end{algorithmic}
 \end{algorithm}
 
-Algoritmus klouby nejdříve natahuje směrem k cíli a poté je zase přitáhne k neposunuté základně. Jediné co ho omezuje jsou délky segmentů, které jsou opravovány posunutím po přímce mezi klouby. Tento postup je opakován dokud se poslední kloub nedostane do přijatelné vzdálenosti od cíle, nebo neprovede maximální počet kroků. Pokud cíl není dosažitelný, tj. jeho vzdálenost od základny je vetší než součet délek mezi klouby, stačí ho provést jednou.
+\noindent Algoritmus klouby nejdříve natahuje směrem k cíli a poté je zase přitáhne k neposunuté základně. Jediné co ho omezuje jsou délky segmentů, které jsou opravovány pohybem po přímce mezi klouby. Tento postup je opakován dokud se poslední kloub nedostane do přijatelné vzdálenosti od cíle, nebo se nevykoná maximální počet kroků. Pokud cíl není dosažitelný, tj. jeho vzdálenost od základny je vetší než součet délek mezi klouby, stačí provést jednu iteraci pro maximální natažení.
 
 \begin{figure}[h]
   \centering\leavevmode
@@ -69,7 +69,7 @@ Algoritmus klouby nejdříve natahuje směrem k cíli a poté je zase přitáhne
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Omezení kloubů}
 \label{sec:omezeni}
-Původní článek ukazuje možnou implementaci omezení pohybu kloubů s 3 stupni volnosti (DOF) pro použití na lidských modelech. Specializovaných rozšíření algoritmu FABRIK existuje mnoho, pro inspiraci byl použit nedávný FABRIK-R\cite{bib:fabrik-r} zaměřený právě na systém otočných kloubů. Ten při opravování pozic a rotací aktuální kloub promítá do možných rovin splňující omezení sousedních. Mějme navíc ještě posloupnost vektorů ve směru osy rotace kloubu $v$, jeden krok první části algoritmu vypadá takto:
+Původní článek ukazuje možnou implementaci omezení pohybu kloubů s 3 stupni volnosti (DOF) pro použití na lidských modelech. Specializovaných rozšíření algoritmu FABRIK existuje mnoho, pro inspiraci byl použit nedávný FABRIK-R\cite{bib:fabrik-r} zaměřený právě na systém otočných kloubů. Ten při opravování pozic a orientací aktuální kloub promítá do možných rovin splňující omezení sousedních. Mějme navíc ještě posloupnost vektorů ve směru osy rotace kloubu $v$, jeden krok první části algoritmu vypadá takto:
 
 \begin{algorithm}[H]
 \caption{Omezení kloubu na 1 DOF}\label{alg:1dof}
@@ -77,7 +77,7 @@ Původní článek ukazuje možnou implementaci omezení pohybu kloubů s 3 stup
 \Statex \texttt{/* Náprava podle $p_{i+1}$ */}
 \State $\Phi_{prev} \gets$ rovina procházející $p_{i+1}$ definovaná rotačním vektorem $\vec{v}_{i+1}$
 \State $\hat{p_i} \gets p_i$ promítnuté do $\Phi_{prev}$ se vzdáleností $d_i$ od $p_{i+1}$
-\State Srovnej rotaci kloubu $\hat{p_i}$ ku $p_{i+1}$
+\State Srovnej orientaci kloubu $\hat{p_i}$ ku $p_{i+1}$
 \Statex
 \Statex \texttt{/* Náprava podle $p_{i-1}$ */}
 \State $\vec{n}_{\Phi_i} = \overrightarrow{p_{i-1}p_{i+1}} \times \vec{v}_{i-1}$
@@ -88,7 +88,8 @@ Původní článek ukazuje možnou implementaci omezení pohybu kloubů s 3 stup
 \end{algorithmic}
 \end{algorithm}
 
-Promítání kloubu do roviny $\Phi_{prev}$ nám zaručí splnění omezení pozice a vzdálenosti od předchozího kloubu. $\Phi_{i}$ potom značí rovinu, ve které se musí aktuální kloub nacházet, aby splnil i omezení následujícího. Úhel $\theta$ potřebujeme právě proto, abychom kloub dostali do pozice na průniku těchto rovin. Úloha nemusí mít pouze jedno, nebo vůbec nějaké řešení. Tento postup pro jednoduchost předpokládá za sebou klouby, s ortogonálními vektory rotace. FABRIK-R\cite{bib:fabrik-r} ukazuje hledání $\theta$ pomocí řešení odvozené nelineární rovnice, kterému se tato metoda vyhýbá. Tento postup se analogicky provádí i při zpětném narovnávání v druhé části algoritmu.
+
+\noindent Promítání kloubu do roviny $\Phi_{prev}$ nám zaručí splnění omezení pozice a vzdálenosti od předchozího kloubu. $\Phi_{i}$ potom značí rovinu, ve které se musí aktuální kloub nacházet, aby splnil i omezení následujícího. Úhel $\theta$ potřebujeme právě proto, abychom kloub dostali do pozice na průniku těchto rovin. Úloha nemusí mít pouze jedno, nebo vůbec nějaké řešení. Tento postup pro jednoduchost předpokládá za sebou klouby, s ortogonálními vektory rotace. FABRIK-R\cite{bib:fabrik-r} ukazuje hledání $\theta$ pomocí řešení odvozené nelineární rovnice, kterému se tato metoda vyhýbá. Tento postup se analogicky provádí i při zpětném narovnávání v druhé části algoritmu.
 
 \begin{figure}[h]
   \centering\leavevmode

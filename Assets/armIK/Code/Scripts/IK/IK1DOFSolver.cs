@@ -13,6 +13,7 @@ public class IK1DOFSolver : MonoBehaviour {
     private List<IKJoint> joints = new List<IKJoint>();
     private List<float> distances = new List<float>();
     private List<Quaternion> relativeRotations = new List<Quaternion>();
+    private List<Quaternion> relativeRotationsInv = new List<Quaternion>();
     private float distanceSum = 0f;
 
     Transform target = null;
@@ -58,6 +59,7 @@ public class IK1DOFSolver : MonoBehaviour {
         joints = new List<IKJoint>();
         distances = new List<float>();
         relativeRotations = new List<Quaternion>();
+        relativeRotationsInv = new List<Quaternion>();
         distanceSum = 0f;
 
         IKJoint joint = root;
@@ -71,8 +73,8 @@ public class IK1DOFSolver : MonoBehaviour {
             distances.Add(distance);
             distanceSum += distance;
 
-            var relativeRotation = Quaternion.Inverse(child.transform.rotation) * joint.transform.rotation;
-            relativeRotations.Add(relativeRotation);
+            relativeRotations.Add(Quaternion.Inverse(child.transform.rotation) * joint.transform.rotation);
+            relativeRotationsInv.Add(Quaternion.Inverse(joint.transform.rotation) * child.transform.rotation);
 
             joint = child;
         }
@@ -87,7 +89,7 @@ public class IK1DOFSolver : MonoBehaviour {
             var PI = joints[i];
             var PNext = joints[i - 1];
 
-            var PIHat = findPIHat(PPrev, PI, distances[i], relativeRotations[i]);
+            var PIHat = findPIHat(PPrev, PI, distances[i], relativeRotations[i]); // relativeRotationsInv[i]
             PI.position = PIHat.Item1;
             PI.rotation = PIHat.Item2;
 
